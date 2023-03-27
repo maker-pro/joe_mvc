@@ -51,10 +51,12 @@ class App
         switch ($routeInfo[0]) {
             case \FastRoute\Dispatcher::NOT_FOUND:
                 // ... 404 Not Found
+                Result::toJson([], Result::ROUTE_ERROR, 'route not found');
                 break;
             case \FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
                 $allowedMethods = $routeInfo[1];
                 // ... 405 Method Not Allowed
+                Result::toJson([], Result::ROUTE_ERROR, 'route method not allowed');
                 break;
             case \FastRoute\Dispatcher::FOUND:
                 $handler = $routeInfo[1];
@@ -99,7 +101,11 @@ class App
             $action = $routerMessage[1];
             $obj = new $controller;
             try {
-                $obj->$action();
+                if (isset(self::$routeInfo[2])) {
+                    $obj->$action(self::$routeInfo[2]);
+                } else {
+                    $obj->$action();
+                }
             } catch (\Exception $e) {
                 Result::toJson([], Result::UNKNOWN_ERROR, $e->getMessage());
             }

@@ -15,6 +15,7 @@ class Result
     const ROUTE_ERROR_MSG = 'route error';       	// 路由错误描述
 	
     const UNKNOWN_ERROR = 4004;     				// 未知错误
+	const UNKNOWN_ERROR_MSG = 'unknown error';          // 未知错误
 
     const NOT_FOUND_TABLE = 5004;     				// 没有数据表错误
     const NOT_FOUND_TABLE_MSG = 'not found table';  // 没有数据表错误描述

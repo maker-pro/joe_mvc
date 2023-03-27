@@ -25,4 +25,14 @@ class BookController extends BaseController
         $book_category = new  BookCategoryModel();
         $this->returnResult($book_category->getAllCategory());
     }
+	
+	public function index_name($params)
+	{
+		//var_dump($params); // ["name" => "..."]
+	}
+	
+	public function index_name_id($params)
+	{
+		//var_dump($params); // ["name" => "...", "id" => "..."]
+	}
 }

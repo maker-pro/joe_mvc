@@ -12,3 +12,5 @@
 
 /** @var TYPE_NAME $r */
 $r->addRoute('GET', '/v1/category', 'WxApi\V1\BookController@index');
+$r->addRoute('GET', '/v1/category/{name}', 'WxApi\V1\BookController@index_name');
+$r->addRoute('GET', '/v1/category/{name}/{id:[0-9]+}', 'WxApi\V1\BookController@index_name_id');
